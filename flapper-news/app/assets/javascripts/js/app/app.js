@@ -1,9 +1,9 @@
-angular.module('flapperNews', ['ui.router'])
+angular.module('flapperNews', ['ui.router', 'templates'])
        .config(function($stateProvider, $urlRouterProvider) {
                 $stateProvider
                   .state('posts', {
                     url: '/posts',
-                    templateUrl: 'views/posts.html',
+                    templateUrl: 'views/_posts.html',
                     controller: 'MainController as ctrl',
                     resolve: {
                       posts: function(postsFactory){
@@ -13,7 +13,7 @@ angular.module('flapperNews', ['ui.router'])
                   })
                   .state('posts.post', {
                     url: '/:id',
-                    templateUrl: 'views/post.html',
+                    templateUrl: 'views/_post.html',
                     controller: 'PostController as post',
                     resolve: {
                       post: function($stateParams, PostService){
