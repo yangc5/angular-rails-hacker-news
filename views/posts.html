@@ -8,6 +8,7 @@
     </span>
     - upvotes: {{post.upvotes}}
     <span ng-click="ctrl.incrementUpvotes(post)" class="glyphicon glyphicon-plus"></span>
+    <span><a ui-sref="posts.post({id: $index})">View Comments</a></span>
   </div>
   <form ng-submit="ctrl.addPost()">
     <input type="text" placeholder="Title" ng-model="ctrl.newTitle">
