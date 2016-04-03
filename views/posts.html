@@ -1,5 +1,6 @@
 <div class="container news-feed">
-  <div ng-repeat="post in ctrl.posts | orderBy: '-upvotes'">
+  <input placeholder="search" ng-model="ctrl.search">
+  <div ng-repeat="post in ctrl.posts | filter: ctrl.search">
     <a ng-show="post.link" href="{{post.link}}">
       {{post.title}}
     </a>
@@ -8,11 +9,9 @@
     </span>
     - upvotes: {{post.upvotes}}
     <span ng-click="ctrl.incrementUpvotes(post)" class="glyphicon glyphicon-plus"></span>
-    <span><a ui-sref="posts.post({id: post.id})" ui-sref-active="active" ng-click="post.showComments = !post.showComments">View Comments</a></span>
-    <div ng-show="post.showComments">
-        <ui-view></ui-view>
-    </div>
+    <span><a ui-sref="posts.post({id: post.id})" ui-sref-active="active">View Comments</a></span>
   </div>
+  <ui-view></ui-view>
   <form ng-submit="ctrl.addPost()">
     <input type="text" placeholder="Title" ng-model="ctrl.newTitle">
     <br>
