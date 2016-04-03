@@ -1,5 +1,5 @@
 function PostController(post){
-  this.data = post.data;
+  this.data = post;
 }
 
 PostController.$inject = ['post'];

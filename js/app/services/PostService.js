@@ -1,6 +1,6 @@
 function PostService(postsFactory){
   this.getPost = function(id) {
-    return postFactory.posts[id];
+    return postsFactory.posts[id];
   }
 }
 
