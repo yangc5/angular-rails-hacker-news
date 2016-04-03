@@ -1,15 +1,16 @@
-function postsFactory(){
-  var o = {
-    posts: [
-      {id: 1, title: 'post 1', upvotes: 5},
-      {id: 2, title: 'post 2', upvotes: 2},
-      {id: 3, title: 'post 3', upvotes: 15},
-      {id: 4, title: 'post 4', upvotes: 9},
-      {id: 5, title: 'post 5', upvotes: 4}
-    ]
+function postsFactory($http){
+  var o = {};
+
+  o.getAll = function(){
+    return $http.get('/posts.json').success(function(data){
+      console.log(o.posts);
+      angular.copy(data, o.posts);
+    });
   };
 
   return o;
 }
+
+postsFactory.$inject=['$http'];
 
 angular.module('flapperNews').factory('postsFactory', postsFactory);

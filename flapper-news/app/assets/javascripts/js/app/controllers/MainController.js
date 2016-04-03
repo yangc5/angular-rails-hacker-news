@@ -1,6 +1,6 @@
 function MainController(posts){
   var ctrl = this;
-  ctrl.posts = posts;
+  ctrl.posts = posts.data;
 
   ctrl.addPost = function(){
     if(!ctrl.newTitle || ctrl.newTitle === '') { return; }
