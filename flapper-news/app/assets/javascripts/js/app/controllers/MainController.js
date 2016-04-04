@@ -13,7 +13,7 @@ function MainController(posts, postsFactory){
   };
 
   ctrl.incrementUpvotes = function(post){
-    post.upvotes += 1;
+    postsFactory.upvote(post);
   }
 }
 
