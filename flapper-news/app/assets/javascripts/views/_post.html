@@ -1,5 +1,7 @@
 <div class="page-header">
   <h3>
-    {{post.data}}
+    <div ng-repeat="comment in post.data.comments">
+      <p>{{comment.body}}</p>
+    </div>
   </h3>
 </div>

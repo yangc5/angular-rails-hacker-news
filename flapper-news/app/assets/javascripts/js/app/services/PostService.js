@@ -1,9 +1,11 @@
-function PostService(postsFactory, $filter){
+function PostService($http){
   this.getPost = function(id) {
-    return $filter('filter')(postsFactory.posts, {id: id})[0];
-  }
+    return $http.get('/posts/'+id+'.json').then(function(res){
+      return res.data;
+    });
+  };
 }
 
-PostService.$inject=['postsFactory', '$filter'];
+PostService.$inject=['$http'];
 
 angular.module('flapperNews').service('PostService', PostService);
