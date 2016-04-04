@@ -1,12 +1,20 @@
 function postsFactory($http){
-  var o = {};
+  var o = {
+    posts: []
+  };
 
   o.getAll = function(){
     return $http.get('/posts.json').success(function(data){
-      console.log(o.posts);
       angular.copy(data, o.posts);
     });
   };
+
+  o.create = function(post, ctrl){
+    return $http.post('/posts.json', post).success(function(data){
+      console.log(data);
+      ctrl.posts.push(data);
+    });
+  }
 
   return o;
 }

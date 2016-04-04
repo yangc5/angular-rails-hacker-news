@@ -7,6 +7,7 @@ angular.module('flapperNews', ['ui.router', 'templates'])
                     controller: 'MainController as ctrl',
                     resolve: {
                       posts: function(postsFactory){
+                        console.log(postsFactory.getAll());
                         return postsFactory.getAll();
                       }
                     }

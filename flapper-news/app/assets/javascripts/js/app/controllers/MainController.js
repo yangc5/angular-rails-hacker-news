@@ -1,18 +1,13 @@
-function MainController(posts){
+function MainController(posts, postsFactory){
   var ctrl = this;
   ctrl.posts = posts.data;
 
   ctrl.addPost = function(){
     if(!ctrl.newTitle || ctrl.newTitle === '') { return; }
-    ctrl.posts.push({
+    postsFactory.create({
       title: ctrl.newTitle,
-      link: ctrl.newLink,
-      upvotes: 0,
-      comments: [
-        {author: 'Joe', body: 'Cool post!', upvotes: 0},
-        {author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
-      ]
-    });
+      link: ctrl.newLink
+    }, ctrl);
     ctrl.newTitle = '';
     ctrl.newLink = '';
   };
@@ -22,7 +17,7 @@ function MainController(posts){
   }
 }
 
-MainController.$inject = ['posts'];
+MainController.$inject = ['posts', 'postsFactory'];
 
 angular.module('flapperNews')
        .controller('MainController', MainController);
